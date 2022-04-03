@@ -5,14 +5,16 @@ public class Player {
     private String firstName;
     private String lastName;
     private String team;
+    private String position;
 
     public Player() {}
 
-    public Player(int id, String firstName, String lastName, String team) {
+    public Player(int id, String firstName, String lastName, String team, String position) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.team = team;
+        this.position = position;
     }
 
     public int getId() {
@@ -45,5 +47,18 @@ public class Player {
 
     public void setTeam(String team) {
         this.team = team;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", team=" + team + ", position=" + position + '}';
     }
 }
