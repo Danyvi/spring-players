@@ -1,7 +1,11 @@
-package xyz.codeandlearn.players;
+package xyz.codeandlearn.players.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import xyz.codeandlearn.players.models.Player;
+import xyz.codeandlearn.players.services.PlayerServiceDB;
+import xyz.codeandlearn.players.services.PlayerServiceMock;
 
 import java.util.List;
 
@@ -10,7 +14,8 @@ import java.util.List;
 public class PlayersController {
 
     @Autowired
-    private PlayerService playerService;
+    private PlayerServiceDB playerService;
+//    private PlayerServiceMock playerService;
 
     @GetMapping("/players")
     public List<Player> getAllPlayers() {
@@ -19,7 +24,7 @@ public class PlayersController {
 
     @GetMapping("/players/{id}")
     // annotation @PathVariable tells Spring to map the value of the path variable to the id variable
-    public Player getPlayer(@PathVariable int id) {
+    public Player getPlayer(@PathVariable Long id) {
         return playerService.getPlayer(id);
     }
 
@@ -30,12 +35,12 @@ public class PlayersController {
     }
 
     @RequestMapping(value="players/{id}", method=RequestMethod.PUT)
-    public void updatePlayer(@PathVariable int id, @RequestBody Player player) {
+    public void updatePlayer(@PathVariable Long id, @RequestBody Player player) {
         playerService.updatePlayer(id, player);
     }
 
     @RequestMapping(value="players/{id}", method=RequestMethod.DELETE)
-    public void deletePlayer(@PathVariable int id) {
+    public void deletePlayer(@PathVariable Long id) {
         playerService.deletePlayer(id);
     }
 }

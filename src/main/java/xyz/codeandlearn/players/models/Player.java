@@ -1,7 +1,19 @@
-package xyz.codeandlearn.players;
+package xyz.codeandlearn.players.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+// annotaion @Entity indicates that this class is an entity
+// and it is the core for mapping java objects to database tables
+
+@Entity
+@Table(name = "player")
 public class Player {
-    private int id;
+    @Id
+    @GeneratedValue
+    private Long id;
     private String firstName;
     private String lastName;
     private String team;
@@ -9,7 +21,7 @@ public class Player {
 
     public Player() {}
 
-    public Player(int id, String firstName, String lastName, String team, String position) {
+    public Player(Long id, String firstName, String lastName, String team, String position) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -17,11 +29,11 @@ public class Player {
         this.position = position;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
